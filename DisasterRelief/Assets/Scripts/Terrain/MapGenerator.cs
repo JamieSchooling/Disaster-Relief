@@ -65,7 +65,7 @@ public class MapGenerator : MonoBehaviour
         {
             display.meshFilter.gameObject.SetActive(true);
             display.textureRenderer.gameObject.SetActive(false);
-            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, strength * 10, strengthCurve), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap, strength, strengthCurve), TextureGenerator.TextureFromColourMap(colourMap, mapWidth, mapHeight));
         }
     }
 
