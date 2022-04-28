@@ -4,7 +4,7 @@ Here's a quick guide to getting started with contributing to this project:
 ### Step 1
 Start by forking this repository to your own account:
 
-![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%201a.png?raw=true)
+![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%201.png?raw=true)
 
 ### Step 2
 
@@ -17,11 +17,11 @@ Once installed, sign in before cloning the repository you just created:
 
 ![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%203a.png?raw=true)
 
-![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%201b.png?raw=true)
-
 **Make sure to define a define a local path for the repo** 
 
 ![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%203b.png?raw=true)
+
+![alt text](https://github.com/QuenchThyThirst/Disaster-Relief/blob/main/Getting%20Started%20Guide/Step%203c.png?raw=true)
 
 ### Step 4
 To open the project in Unity, locate the project folder within the Unity Hub.
