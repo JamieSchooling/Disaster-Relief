@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EndlessTerrain : MonoBehaviour
 {
-    const float viewerMoveThresholdForChunkUpdate = 25f;
+    const float viewerMoveThresholdForChunkUpdate = 100f;
     const float sqrViewerMoveThresholdForChunkUpdate = viewerMoveThresholdForChunkUpdate * viewerMoveThresholdForChunkUpdate;
+    const float viewerDstForChunkUnloading = 7000f;
+    const float sqrViewerDstForChunkUnloading = viewerDstForChunkUnloading * viewerDstForChunkUnloading;
 
     public LODInfo[] detailLevels;
     public static float maxViewDst = 450f;
@@ -23,6 +25,7 @@ public class EndlessTerrain : MonoBehaviour
 
     Dictionary<Vector2, TerrainChunk> terrainChunkDictionary = new Dictionary<Vector2, TerrainChunk>();
     static List<TerrainChunk> terrainChunksVisibleLastUpdate = new List<TerrainChunk>();
+    static List<TerrainChunk> terrainChunksDisabled = new List<TerrainChunk>();
 
     private void Start()
     {
@@ -42,6 +45,7 @@ public class EndlessTerrain : MonoBehaviour
         {
             viewerPositionOld = viewerPosition;
             UpdateVisibleChunks();
+            UnloadDistantChunks();
         }
     }
 
@@ -50,6 +54,7 @@ public class EndlessTerrain : MonoBehaviour
         for (int i = 0; i < terrainChunksVisibleLastUpdate.Count; i++)
         {
             terrainChunksVisibleLastUpdate[i].SetVisible(false);
+            terrainChunksDisabled.Add(terrainChunksVisibleLastUpdate[i]);
         }
         terrainChunksVisibleLastUpdate.Clear();
 
@@ -74,10 +79,22 @@ public class EndlessTerrain : MonoBehaviour
         }
     }
 
+    private void UnloadDistantChunks()
+    {
+        for (int i = 0; i < terrainChunksDisabled.Count; i++)
+        {
+            if ((viewerPosition - terrainChunksDisabled[i].position).sqrMagnitude > sqrViewerDstForChunkUnloading)
+            {
+                terrainChunkDictionary.Remove(terrainChunksDisabled[i].position);
+                Destroy(terrainChunksDisabled[i].meshObject);
+            }
+        }         
+    }
+
     public class TerrainChunk
     {
-        GameObject meshObject;
-        Vector2 position;
+        public GameObject meshObject;
+        public Vector2 position;
         Bounds bounds;
 
 
