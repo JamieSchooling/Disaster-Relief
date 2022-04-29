@@ -14,7 +14,6 @@ public class MapGenerator : MonoBehaviour
     public const int mapChunkSize = 241;
     [Range(0, 6)]
     public int editorPreviewLOD;
-    [Range(2f, 2000f)]
     public float noiseScale = 20f;
 
     [Range(1f, 30f)]
@@ -158,6 +157,7 @@ public class MapGenerator : MonoBehaviour
 
     private void OnValidate()
     {
+        if (noiseScale < 2) lacunarity = 2;
         if (lacunarity < 1) lacunarity = 1;
 
         falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
