@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform player;
-    public Vector3 offset = Vector3.zero;
+    public Vector3 positionOffset = Vector3.zero;
+    public Vector3 rotationOffset = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //transform.position = player.position + offset;
-        transform.position = player.TransformPoint(offset);
-        transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y, 0);
+        transform.position = player.TransformPoint(positionOffset);
+        transform.eulerAngles = new Vector3(player.transform.eulerAngles.x + rotationOffset.x, player.transform.eulerAngles.y + rotationOffset.y, rotationOffset.z);
     }
 }

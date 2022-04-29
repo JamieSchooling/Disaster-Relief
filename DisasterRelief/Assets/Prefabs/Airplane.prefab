@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 1
-  mvSpeed: 30
+  mvSpeed: 300
   pitchSpeed: 50
   yawSpeed: 20
   rollSpeed: 100
