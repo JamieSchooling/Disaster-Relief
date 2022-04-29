@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlaneMovement : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class PlaneMovement : MonoBehaviour
 
     float downForce;
 
+    float pitchInput;
+    float yawInput;
+    float rollInput;
+
     void Start()
     {
 
@@ -42,15 +47,11 @@ public class PlaneMovement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y - downForce, transform.position.z);
         transform.position += transform.forward * Time.deltaTime * mvSpeed;
 
-        int h_input = System.Convert.ToInt32(Input.GetKey("d")) - System.Convert.ToInt32(Input.GetKey("a"));
-        int v_input = System.Convert.ToInt32(Input.GetKey("w")) - System.Convert.ToInt32(Input.GetKey("s"));
-        int o_input = System.Convert.ToInt32(Input.GetKey("q")) - System.Convert.ToInt32(Input.GetKey("e"));
-
-        if (h_input != 0)
+        if (yawInput != 0)
         {
-            if (Mathf.Abs(yawAmount) < Mathf.Abs(h_input))
+            if (Mathf.Abs(yawAmount) < Mathf.Abs(yawInput))
             {
-                yawAmount += h_input * yawAccel * Time.deltaTime;
+                yawAmount += yawInput * yawAccel * Time.deltaTime;
             }
         }
         else
@@ -61,11 +62,11 @@ public class PlaneMovement : MonoBehaviour
             }
         }
 
-        if (v_input != 0)
+        if (pitchInput != 0)
         {
-            if (Mathf.Abs(pitchAmount) < Mathf.Abs(v_input))
+            if (Mathf.Abs(pitchAmount) < Mathf.Abs(pitchInput))
             {
-                pitchAmount += v_input * pitchAccel * Time.deltaTime;
+                pitchAmount += pitchInput * pitchAccel * Time.deltaTime;
             }
         }
         else
@@ -76,11 +77,11 @@ public class PlaneMovement : MonoBehaviour
             }
         }
 
-        if (o_input != 0)
+        if (rollInput != 0)
         {
-            if (Mathf.Abs(rollAmount) < Mathf.Abs(o_input))
+            if (Mathf.Abs(rollAmount) < Mathf.Abs(rollInput))
             {
-                rollAmount += o_input * rollAccel * Time.deltaTime;
+                rollAmount -= rollInput * rollAccel * Time.deltaTime;
             }
         }
         else
@@ -95,6 +96,21 @@ public class PlaneMovement : MonoBehaviour
         transform.Rotate(new Vector3(0, yawSpeed * Time.deltaTime * yawAmount, 0));
         transform.Rotate(new Vector3(pitchSpeed * Time.deltaTime * pitchAmount, 0, 0));
         transform.Rotate(new Vector3(0, 0, rollSpeed * Time.deltaTime * rollAmount));
+    }
+
+    void OnPitch(InputValue value)
+    {
+        pitchInput = value.Get<float>();
+    }
+
+    void OnYaw(InputValue value)
+    {
+        yawInput = value.Get<float>();
+    }
+
+    void OnRoll(InputValue value)
+    {
+        rollInput = value.Get<float>();
     }
 
 }
