@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: d7312862a974c9c4da175e879b1cc1e6, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -352,6 +352,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2746534515046128256, guid: 4223b72056fd8994d85356eb89b999c5, type: 3}
+      propertyPath: far clip plane
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 2746534515046128258, guid: 4223b72056fd8994d85356eb89b999c5, type: 3}
       propertyPath: player
       value: 
@@ -421,6 +425,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 976895261430878733, guid: d3cb15ed40ced48408fb7f7e710c5001, type: 3}
+      propertyPath: mvSpeed
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 976895261430878735, guid: d3cb15ed40ced48408fb7f7e710c5001, type: 3}
       propertyPath: m_Name
       value: Airplane

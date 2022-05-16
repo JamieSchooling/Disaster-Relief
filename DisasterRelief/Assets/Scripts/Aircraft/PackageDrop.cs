@@ -16,9 +16,16 @@ public class PackageDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown("space"))
         {
             Instantiate(package, new Vector3(dropPoint.position.x, dropPoint.position.y, dropPoint.position.z), Quaternion.identity);
         }
+        */
+    }
+
+    void OnDropPackage()
+    {
+        Instantiate(package, new Vector3(dropPoint.position.x, dropPoint.position.y, dropPoint.position.z), Quaternion.identity);
     }
 }
