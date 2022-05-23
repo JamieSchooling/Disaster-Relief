@@ -13,13 +13,9 @@ public class Lightning : MonoBehaviour
     [SerializeField]
     float MaxHeight = 10;
 
-    private bool LightningDone = false;
+    public Death death;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool LightningDone = false;
 
     // Update is called once per frame
     void Update()
@@ -32,6 +28,7 @@ public class Lightning : MonoBehaviour
             {
                 LightningDone = true;
                 Instantiate(Bolt, new Vector3(CoolerPlane.transform.position.x, CoolerPlane.transform.position.y, CoolerPlane.transform.position.z), Quaternion.identity);
+                death.PlayerDeath();
             }
         }
     }
