@@ -42,7 +42,6 @@ public class PlaneMovement : MonoBehaviour
     void Update()
     {
         planeRotation = transform.localRotation.eulerAngles.z;
-        print(planeRotation);
  
         transform.position = new Vector3(transform.position.x, transform.position.y - downForce, transform.position.z);
         transform.position += transform.forward * Time.deltaTime * mvSpeed;
