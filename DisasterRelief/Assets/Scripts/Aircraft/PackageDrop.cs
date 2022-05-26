@@ -1,31 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PackageDrop : MonoBehaviour
 {
-    public Transform dropPoint;
-    public GameObject package;
+    public static Action<Transform> OnDrop;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (Input.GetKeyDown("space"))
-        {
-            Instantiate(package, new Vector3(dropPoint.position.x, dropPoint.position.y, dropPoint.position.z), Quaternion.identity);
-        }
-        */
-    }
-
+    [SerializeField] Transform dropPoint;
+    [SerializeField] GameObject package;
+    
     void OnDropPackage()
     {
-        Instantiate(package, new Vector3(dropPoint.position.x, dropPoint.position.y, dropPoint.position.z), Quaternion.identity);
+        GameObject packageGO = Instantiate(package, dropPoint.transform.position, dropPoint.localRotation);
+        Destroy(packageGO, 3f);
+
+        OnDrop?.Invoke(packageGO.transform);
     }
 }
