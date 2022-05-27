@@ -112,4 +112,8 @@ public class PlaneMovement : MonoBehaviour
         rollInput = value.Get<float>();
     }
 
+    public void SetMoveSpeed(float newSpeed)
+    {
+        mvSpeed = newSpeed;
+    }
 }
