@@ -20,8 +20,6 @@ public class Lightning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player position is: " + CoolerPlane.transform.position.y);
-
         if (CoolerPlane.transform.position.y >= MaxHeight)
         {
             if (!LightningDone)
