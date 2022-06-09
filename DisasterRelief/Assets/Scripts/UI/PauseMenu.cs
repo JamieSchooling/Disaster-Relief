@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        isDed = death.isDed;
+        //isDed = death.isDed;
     }
 
     void OnPause()
