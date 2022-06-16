@@ -34,6 +34,12 @@ public class EndlessTerrain : MonoBehaviour
         UpdateVisibleChunks();
     }
 
+    private void OnDestroy()
+    {
+        terrainChunkDictionary.Clear();
+        terrainChunksVisibleLastUpdate.Clear();
+    }
+
     private void Update()
     {
         viewerPosition = new Vector2(viewer.position.x, viewer.position.z);

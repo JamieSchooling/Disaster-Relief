@@ -13,8 +13,8 @@ public class WaypointSpawner : MonoBehaviour
 
     public void SpawnWaypoint(Transform package)
     {
-        int x = Random.Range(-5000, 5000);
-        int z = Random.Range(-5000, 5000);
+        int x = Random.Range(-1000, 1000);
+        int z = Random.Range(-1000, 1000);
         transform.position = new Vector3(x, 190, z);
     }
 }

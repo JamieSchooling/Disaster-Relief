@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,9 +13,6 @@ public class PauseMenu : MonoBehaviour
     Button btn;
 
     bool isPaused = false;
-
-    bool isDed;
-    public Death death;
 
     private void Start()
     {
@@ -28,26 +26,33 @@ public class PauseMenu : MonoBehaviour
 
     void OnPause()
     {
-        if (!isDed)
-        {
-            isPaused = !isPaused;
+        isPaused = !isPaused;
 
-            if (isPaused)
-            {
-                menu.SetActive(true);
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                menu.SetActive(false);
-                Time.timeScale = 1f;
-            }
+        if (isPaused)
+        {
+            menu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            menu.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
     
     public void Unpause()
     {
         Debug.Log("Unpause");
+    }
+
+    public void Shop()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     

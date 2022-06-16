@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Waypoint
   - Terrain
+  - MoneyManager
+  - MoneyText
   layers:
   - Default
   - TransparentFX
