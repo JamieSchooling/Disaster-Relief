@@ -5,6 +5,8 @@ public class ScoreCalculator : MonoBehaviour
 {
     public static Action OnScoreUpdated;
 
+    [SerializeField] Transform waypoint;
+
     private void Start()
     {
         PackageDrop.OnDrop += RecalculateScore;
@@ -13,7 +15,6 @@ public class ScoreCalculator : MonoBehaviour
     public void RecalculateScore(Transform package)
     {
         Debug.Log("Invoked");
-        Transform waypoint = GameObject.FindGameObjectWithTag("Waypoint").transform;
         if (waypoint == null) return;
 
         Vector3 distanceV3 = waypoint.position - package.position;
