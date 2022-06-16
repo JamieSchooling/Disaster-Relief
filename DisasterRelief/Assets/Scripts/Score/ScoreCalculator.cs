@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreCalculator : MonoBehaviour
 {
-    public static Action OnScoreUpdated;
+    public static Action<int> OnScoreUpdated;
 
     [SerializeField] Transform waypoint;
 
@@ -23,15 +23,15 @@ public class ScoreCalculator : MonoBehaviour
         Debug.Log(distance.magnitude);
         if (distance.magnitude < 100f)
         {
-            Debug.Log("Successfully Dropped Package");
+            OnScoreUpdated?.Invoke(200);
         }
         else if (distance.magnitude < 150f)
         {
-            Debug.Log("Almost there");
+            OnScoreUpdated?.Invoke(50);
         }
         else
         {
-            Debug.Log("You missed.");
+            OnScoreUpdated?.Invoke(-10);
         }
     }
 }
